@@ -12,5 +12,5 @@ export const getRandomlyGeneratedChoice = async (): Promise<
 
 export const play = async (
   choiceId: number
-): Promise<ApiResponse<GameResultDto[]>> =>
+): Promise<ApiResponse<GameResultDto>> =>
   apiCall(() => API.post('/api/play', { player: choiceId }));
