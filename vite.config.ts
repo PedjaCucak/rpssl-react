@@ -10,7 +10,7 @@ export default defineConfig({
     port: 3000,
     proxy: {
       '/api': {
-        target: 'https://localhost:7181',
+        target: 'https://codechallenge.boohma.com/choices',
         changeOrigin: true,
         secure: false, // accept the self-signed API cert in dev
       },
