@@ -10,26 +10,25 @@ import theme from './theme/theme';
 import { SnackbarProvider } from 'notistack';
 import { CustomAlert } from './components/CustomAlert';
 
-
 ReactDOM.createRoot(document.getElementById('root')!).render(
-    <React.StrictMode>
-        <ThemeProvider theme={theme}>
-          <SnackbarProvider
-            maxSnack={10}
-            autoHideDuration={5000}
-            anchorOrigin={{ vertical: 'top', horizontal: 'right' }}
-            Components={{
-              success: CustomAlert,
-              error: CustomAlert,
-              warning: CustomAlert,
-              info: CustomAlert,
-            }}
-          >
-            <CssBaseline />
-            <Provider store={store}>
-              <App />
-            </Provider>
-          </SnackbarProvider>
-        </ThemeProvider>
-    </React.StrictMode>
-  );
+  <React.StrictMode>
+    <ThemeProvider theme={theme}>
+      <SnackbarProvider
+        maxSnack={10}
+        autoHideDuration={5000}
+        anchorOrigin={{ vertical: 'top', horizontal: 'right' }}
+        Components={{
+          success: CustomAlert,
+          error: CustomAlert,
+          warning: CustomAlert,
+          info: CustomAlert,
+        }}
+      >
+        <CssBaseline />
+        <Provider store={store}>
+          <App />
+        </Provider>
+      </SnackbarProvider>
+    </ThemeProvider>
+  </React.StrictMode>
+);
