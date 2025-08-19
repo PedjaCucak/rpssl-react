@@ -1,0 +1,11 @@
+# Ignore build output
+dist
+node_modules
+build
+
+# Ignore config files
+vite.config.ts
+tsconfig.json
+
+# Ignore generated files
+coverage
