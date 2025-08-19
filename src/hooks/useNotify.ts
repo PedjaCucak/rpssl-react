@@ -1,10 +1,14 @@
 import type { AlertColor } from '@mui/material';
 import { useSnackbar } from 'notistack';
+import { useCallback } from 'react';
 
 export const useNotify = () => {
   const { enqueueSnackbar } = useSnackbar();
 
-  return (message: string, severity: AlertColor = 'info') => {
-    enqueueSnackbar(message, { variant: severity });
-  };
+  return useCallback(
+    (message: string, severity: AlertColor = 'info') => {
+      enqueueSnackbar(message, { variant: severity });
+    },
+    [enqueueSnackbar]
+  );
 };
