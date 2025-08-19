@@ -1,5 +1,9 @@
 import { configureStore } from '@reduxjs/toolkit';
-import gameReducer from './slices/gameSlice';
+import gameReducer, {
+  hydrateRecent,
+  selectRecentResults,
+} from './slices/gameSlice';
+import { loadRecent, saveRecent } from '../utils/scoreboardStorage';
 
 const store = configureStore({
   reducer: {
@@ -16,6 +20,22 @@ const store = configureStore({
         ignoredPaths: ['ui.resolve'],
       },
     }),
+});
+
+const persisted = loadRecent();
+if (persisted.length) {
+  store.dispatch(hydrateRecent(persisted));
+}
+
+let lastJson = JSON.stringify(persisted);
+store.subscribe(() => {
+  const state = store.getState();
+  const recent = selectRecentResults(state);
+  const json = JSON.stringify(recent);
+  if (json !== lastJson) {
+    lastJson = json;
+    saveRecent(recent);
+  }
 });
 
 export type RootState = ReturnType<typeof store.getState>;

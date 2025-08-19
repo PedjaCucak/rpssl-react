@@ -66,6 +66,9 @@ const gameSlice = createSlice({
     resetScoreboard(state) {
       state.recent = [];
     },
+    hydrateRecent(state, action: PayloadAction<GameResult[]>) {
+      state.recent = action.payload.slice(0, 10);
+    },
   },
   extraReducers(builder) {
     builder
@@ -95,7 +98,8 @@ const gameSlice = createSlice({
   },
 });
 
-export const { clearGameSlice, resetScoreboard } = gameSlice.actions;
+export const { clearGameSlice, resetScoreboard, hydrateRecent } =
+  gameSlice.actions;
 export default gameSlice.reducer;
 
 const selectGame = (s: RootState) => s.game;
