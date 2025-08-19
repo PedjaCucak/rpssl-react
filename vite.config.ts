@@ -10,8 +10,9 @@ export default defineConfig({
     port: 3000,
     proxy: {
       '/api': {
-        target: 'https://codechallenge.boohma.com/choices',
+        target: 'https://codechallenge.boohma.com',
         changeOrigin: true,
+        rewrite: (path) => path.replace(/^\/api/, ''), // "/api/choices" -> "/choices"
         secure: false, // accept the self-signed API cert in dev
       },
     },
