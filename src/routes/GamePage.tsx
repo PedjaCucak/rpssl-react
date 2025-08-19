@@ -1,9 +1,9 @@
-import { useApiErrorHandler } from '../hooks/useApiErrorHandler';
-import { useAppDispatch } from '../store/storeHooks';
+import { useLoadChoices } from '../hooks/useLoadChoices';
 
 export const GamePage: React.FC = () => {
-  const dispatch = useAppDispatch();
-  const handleApiError = useApiErrorHandler();
+  const { loading } = useLoadChoices({
+    auto: true,
+  });
 
-  return <div>Game time!</div>;
+  return loading ? <div>Loading...</div> : <div>Game time!</div>;
 };

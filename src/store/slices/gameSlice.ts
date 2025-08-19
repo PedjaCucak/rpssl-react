@@ -21,7 +21,7 @@ const initialState: GameState = {
   choicesStatus: 'loading',
 };
 
-export const fetchCoicesThunk = createAsyncThunk<
+export const fetchChoicesThunk = createAsyncThunk<
   Choice[], // fulfilled payload = Choice[]
   void, // arg
   { rejectValue: ApiError }
@@ -41,14 +41,14 @@ const gameSlice = createSlice({
   },
   extraReducers(builder) {
     builder
-      .addCase(fetchCoicesThunk.pending, (state) => {
+      .addCase(fetchChoicesThunk.pending, (state) => {
         state.choicesStatus = 'loading';
       })
-      .addCase(fetchCoicesThunk.fulfilled, (state, action) => {
+      .addCase(fetchChoicesThunk.fulfilled, (state, action) => {
         state.choicesStatus = 'success';
         state.choices = action.payload;
       })
-      .addCase(fetchCoicesThunk.rejected, (state) => {
+      .addCase(fetchChoicesThunk.rejected, (state) => {
         state.choicesStatus = 'error';
       });
   },

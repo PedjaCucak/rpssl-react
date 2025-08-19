@@ -4,4 +4,4 @@ import { apiCall } from '../utils/apiClient';
 import { API } from './APIs';
 
 export const getChoices = async (): Promise<ApiResponse<ChoiceDto[]>> =>
-  apiCall(() => API.get('/choices'));
+  apiCall(() => API.get('/api/choices'));
