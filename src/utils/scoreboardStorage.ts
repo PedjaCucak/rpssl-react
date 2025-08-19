@@ -1,7 +1,7 @@
 import { appConfig } from '../config/appConfig';
 import type { GameResult } from '../types/model';
 
-const KEY = appConfig.recentStorageKey;
+const KEY = appConfig.recentStorageKey ?? 'rpssl_recent_v2';
 
 const hasStorage = () =>
   typeof window !== 'undefined' && typeof window.localStorage !== 'undefined';
