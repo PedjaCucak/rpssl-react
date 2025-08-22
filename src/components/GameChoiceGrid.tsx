@@ -1,6 +1,9 @@
 import * as React from 'react';
 import { useAppSelector } from '../store/storeHooks';
-import { selectChoices, selectPlayStatus } from '../store/slices/gameSlice';
+import {
+  selectChoices,
+  selectPlayStatus,
+} from '../store/selectors/gameSelectors';
 import {
   Box,
   Button,

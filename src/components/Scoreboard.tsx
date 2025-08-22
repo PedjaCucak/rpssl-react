@@ -1,10 +1,10 @@
 import * as React from 'react';
 import { useAppDispatch, useAppSelector } from '../store/storeHooks';
+import { resetScoreboard } from '../store/slices/gameSlice';
 import {
-  resetScoreboard,
   selectChoiceNameById,
   selectRecentResults,
-} from '../store/slices/gameSlice';
+} from '../store/selectors/gameSelectors';
 import {
   Card,
   CardActions,

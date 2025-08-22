@@ -1,8 +1,6 @@
 import { configureStore } from '@reduxjs/toolkit';
-import gameReducer, {
-  hydrateRecent,
-  selectRecentResults,
-} from './slices/gameSlice';
+import gameReducer, { hydrateRecent } from './slices/gameSlice';
+import { selectRecentResults } from '../store/selectors/gameSelectors';
 import { loadRecent, saveRecent } from '../utils/scoreboardStorage';
 
 const store = configureStore({

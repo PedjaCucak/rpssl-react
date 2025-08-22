@@ -4,13 +4,13 @@ import { useLoadChoices } from '../hooks/useLoadChoices';
 import { Container, Skeleton, Stack, Typography } from '@mui/material';
 import { GameChoiceGrid } from '../components/GameChoiceGrid';
 import { Scoreboard } from '../components/Scoreboard';
+import { playRoundThunk } from '../store/slices/gameSlice';
 import {
   selectLastRound,
   selectPlayStatus,
   selectChoiceNameById,
-  playRoundThunk,
   selectChoicesStatus,
-} from '../store/slices/gameSlice';
+} from '../store/selectors/gameSelectors';
 import { WinnerOverlay } from '../components/WinnerOverlay';
 import { useApiErrorHandler } from '../hooks/useApiErrorHandler';
 import { useCallback, useEffect, useState } from 'react';

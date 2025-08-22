@@ -1,17 +1,15 @@
 import {
   createAsyncThunk,
-  createSelector,
   createSlice,
   type PayloadAction,
 } from '@reduxjs/toolkit';
-import type { RootState } from '../../store';
 import { getChoices, play } from '../../api/GameAPIs';
 import type { ApiError } from '../../types/api';
 import { mapChoice, mapGameResult } from '../../utils/mappers';
 import type { LoadStatus } from '../../types/ui';
 import type { Choice, GameResult } from '../../types/model';
 
-type GameState = {
+export type GameState = {
   choices: Choice[];
   choicesStatus: LoadStatus;
 
@@ -101,21 +99,3 @@ const gameSlice = createSlice({
 export const { clearGameSlice, resetScoreboard, hydrateRecent } =
   gameSlice.actions;
 export default gameSlice.reducer;
-
-const selectGame = (s: RootState) => s.game;
-
-export const selectChoices = createSelector([selectGame], (g) => g.choices);
-export const selectChoicesStatus = createSelector(
-  selectGame,
-  (g) => g.choicesStatus
-);
-
-export const selectPlayStatus = createSelector(selectGame, (g) => g.playStatus);
-export const selectLastRound = createSelector(selectGame, (g) => g.lastRound);
-export const selectRecentResults = createSelector(selectGame, (g) => g.recent);
-
-export const selectChoiceNameById = createSelector(selectChoices, (choices) => {
-  const m = new Map<number, string>();
-  for (const c of choices) m.set(c.id, c.name);
-  return (id: number) => m.get(id) ?? `#${id}`;
-});
